@@ -1,0 +1,38 @@
+<div class="container">
+
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/products">Products</a></li>
+    <li class="breadcrumb-item active">Add item</li>
+    </ol>
+    
+    <h4 class="display-5">Add item</h4>
+    
+    <form action="/product/add" method="post" style="width:50%">
+    <input type="hidden" name="_csrf" value="<%= _csrf %>">
+    <div class="form-group">
+    <label for="name">Product name:</label>
+    <input type="text" name="name" class="form-control">
+    </div>
+    
+    <div class="form-group">
+    <label for="price">price:</label>
+    <input type="text" name="price" class="form-control">
+    </div>
+    
+    <div class="form-group">
+    <label for="image">Image URL:</label>
+    <input type="text" name="image" class="form-control">
+    </div>
+    
+    <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" cols="3" class="form-control"></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-success">Submit</button>
+    
+    </form>
+    
+    </div>
+    
+    

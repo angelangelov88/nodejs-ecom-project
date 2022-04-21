@@ -1,0 +1,74 @@
+<div class="container">
+	<div class="row">
+		<h4>Your Basket:</h4>
+	</div>
+	<div class="row">
+		<div class="col-lg-8">
+
+<% if (items == 0 || items.totalQty == 0 ) { -%>
+    <h3>Sorry, no items in your basket</h3>
+    <% } else { -%>
+        
+        <table class="table table-borderless">
+        <thead>
+         <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Update Quantity</th>
+          <th>Total Price</th>
+          <th></th>
+         </tr>
+        </thead>
+        <tbody>
+         <% Object.keys(items).forEach( function(item) { %>
+          <tr>
+           <td> <%= items[item].product.name %> </td>
+           <td value="<%= items[item].qty %>"><%= items[item].qty %></td>
+           </td>
+           <td>£<%= parseFloat(items[item].product.price).toFixed(2) %></td>
+           <td> 
+            <form action="/update-basket-item" method="post">
+                <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                <select name="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <input type="hidden" name="productId" value="<%= items[item].product.id %>">
+                <button type="submit" class="btn">Update</button>
+            </form>
+           </td>
+           <td>£<%= parseFloat(items[item].product.price *  items[item].qty).toFixed(2) %> </td>
+           <td><a href="/remove-item/<%= items[item].product.id %>">
+            <i class="fa fa-trash"></i>
+           </a></td>
+          </tr>
+
+         <% }) %>
+        </tbody>
+        </table>
+        <h4>Order summary:</h4>
+        <p>Total Number of Items: <%= session.basket.totalQty %></p>
+        <p class="gray-totals">Subtotal: £ <%= parseFloat(session.basket.totalPrice).toFixed(2) %></p>
+        <p class="gray-totals">VAT: £ <%= parseFloat((session.basket.totalPrice / 1.2) * 0.2).toFixed(2) %></p>
+        <p class="gray-totals">Total exc. VAT: £ <%= parseFloat(session.basket.totalPrice / 1.2).toFixed(2) %></p>
+        <p class="total-main">Total: £ <%= parseFloat(session.basket.totalPrice).toFixed(2) %></p>
+
+            <form action="/sendEmail" method="post">
+                <input type="email" name="email" required placeholder="Customer email address">
+                <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                <button type="submit" class="btn btn-success">Send</button>
+            </form>
+
+    <% } -%>
+</div>
+</div>
+</div>
