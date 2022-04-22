@@ -1,21 +1,21 @@
 
-module.exports.sendmail =
-   function (obj) {
+module.exports.sendEmail =
+   function (email) {
+     console.log('hello there')
     sails.hooks.email.send(
       "testEmail",
       {
-        recipientName: "Joe",
-        senderName: "Sue"
-      // Name: obj.name
+        recipientName: email,
+        senderName: "Angel"
       },
       {
-        to: "angel.levski@gmail.com",
-        // to: obj.email,
-        subject: "Hi there"
+        to: email,
+        subject: "Your order"
       },
       function(err) {console.log(err || "It worked!");}
     ) 
-    
+    console.log('hello 2')
+
   
 };
 

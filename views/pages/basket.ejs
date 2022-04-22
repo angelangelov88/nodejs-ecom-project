@@ -63,9 +63,12 @@
         <p class="total-main">Total: £ <%= parseFloat(session.basket.totalPrice).toFixed(2) %></p>
 
             <form action="/sendEmail" method="post">
-                <input type="email" name="email" required placeholder="Customer email address">
+                <input type="email" name="emailAddress" required placeholder="Customer email address">
                 <input type="hidden" name="_csrf" value="<%= _csrf %>">
                 <button type="submit" class="btn btn-success">Send</button>
+                <!-- <% if (true) { -%>
+                <p id="error">Wrong email</p>
+              <% } %> -->
             </form>
 
     <% } -%>

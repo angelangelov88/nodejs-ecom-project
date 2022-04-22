@@ -1,7 +1,17 @@
-<!-- <p>Dear <%=recipientName%>,</p>
+<p>Dear <%=recipientName%>,</p>
 <br/>
-<p><em>Thank you</em> for being a friend.</p>
-<p>Love,<br/><%=senderName%></p> -->
+<p><em>Thank you</em> for being our customer.</p>
+<ul>Your order is:
+<!-- <% Object.keys(items).forEach( function(item) { %>
 
+    <li> <%= items[item].product.name %> </li>
+     <li value="<%= items[item].qty %>"><%= items[item].qty %></li>
 
-<p>hello there</p>
+     <li>£<%= parseFloat(items[item].product.price).toFixed(2) %></li>
+     <li>£<%= parseFloat(items[item].product.price *  items[item].qty).toFixed(2) %> </li>
+     
+   <% }) %> -->
+</ul>
+
+<p>Regards,<br/><%=senderName%></p>
+

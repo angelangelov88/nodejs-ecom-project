@@ -15,6 +15,7 @@ module.exports.routes = {
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /': { action: 'view-homepage-or-redirect' },
   'GET /products': 'PageController.index',
+
   'GET /product/add': 'PageController.add',
   'POST /product/add': 'ProductController.create',
   'GET /add-to-basket/:id': 'BasketController.add',
